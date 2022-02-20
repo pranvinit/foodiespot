@@ -21,18 +21,8 @@ import { CustomText } from "../../../components/typography/text.component";
 
 export default function RestrauantInfoCard({ restrauant = {} }) {
   // de-structuring properties from restrauant object
-
-  const {
-    name = "Some random restrauant",
-    icon = "https://cdn2.iconfinder.com/data/icons/maki/100/lodging-512.png",
-    photos = [
-      "https://images.pexels.com/photos/2454533/pexels-photo-2454533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    ],
-    address = "123 some random street NYC",
-    isOpen = true,
-    rating = 4.5,
-    isClosedTemporarily = true,
-  } = restrauant;
+  const { name, icon, photos, address, isOpen, rating, isClosedTemporarily } =
+    restrauant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
