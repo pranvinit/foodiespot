@@ -1,19 +1,27 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { restrauantsRequest } from "./restrauant.service";
+
+// context imports
+import { LocationContext } from "../location/location.context";
 
 export const RestaurantsContext = createContext();
 
 export const RestaurantsContextProvider = ({ children }) => {
+  const { keyword, location } = useContext(LocationContext);
+
   const [restrauants, setRestrauants] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, isError] = useState(null);
 
   const getRestrauants = (location) => {
     setLoading(true);
+    setRestrauants([]);
     setTimeout(async () => {
       try {
         setLoading(false);
-        const results = await restrauantsRequest();
+        const results = await restrauantsRequest(
+          `${location.lat},${location.lng}`
+        );
         setRestrauants(results);
       } catch (error) {
         setLoading(false);
@@ -22,11 +30,13 @@ export const RestaurantsContextProvider = ({ children }) => {
     }, 2000);
   };
   useEffect(() => {
-    getRestrauants();
-  }, []);
+    getRestrauants(location);
+  }, [keyword]);
 
   return (
-    <RestaurantsContext.Provider value={{ restrauants, loading, error }}>
+    <RestaurantsContext.Provider
+      value={{ restrauants, getRestrauants, loading, error }}
+    >
       {children}
     </RestaurantsContext.Provider>
   );

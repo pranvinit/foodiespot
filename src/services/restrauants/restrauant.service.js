@@ -15,9 +15,7 @@ const transformRestrauants = ({ results } = []) => {
   return result;
 };
 
-export const restrauantsRequest = async (
-  location = "37.7749295,-122.4194155"
-) => {
+export const restrauantsRequest = async (location) => {
   const restrauants = mocks[location];
   if (!restrauants) {
     throw new Error("not found");
