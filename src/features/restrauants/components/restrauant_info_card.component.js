@@ -21,7 +21,7 @@ import { CustomText } from "../../../components/typography/text.component";
 
 export default function RestrauantInfoCard({ restrauant = {} }) {
   // de-structuring properties from restrauant object
-  const { name, icon, photos, address, isOpen, rating, isClosedTemporarily } =
+  const { name, icon, photos, rating, address, isOpen, isClosedTemporarily } =
     restrauant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));

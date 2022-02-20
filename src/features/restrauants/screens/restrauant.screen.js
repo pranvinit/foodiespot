@@ -42,17 +42,25 @@ const ErrorContainer = styled.View`
 `;
 
 export default function RestrauantScreen() {
-  const { restrauants, loading, getRestrauants } =
-    useContext(RestaurantsContext);
-  const { error, setKeyword } = useContext(LocationContext);
-  if (loading) {
+  const {
+    restrauants,
+    loading: restrauantsLoading,
+    error: restrauantsError,
+  } = useContext(RestaurantsContext);
+  const {
+    setKeyword,
+    loading: locationLoading,
+    error: locationError,
+  } = useContext(LocationContext);
+
+  if (restrauantsLoading || locationLoading) {
     return (
       <LoadingContainer>
         <Loading size={50} animating={true} color={Colors.blue300} />
       </LoadingContainer>
     );
   }
-  if (error) {
+  if (restrauantsError || locationError) {
     return (
       <ErrorContainer>
         <Spacer position="bottom" size="large">
@@ -68,6 +76,7 @@ export default function RestrauantScreen() {
       </ErrorContainer>
     );
   }
+
   return (
     <SafeArea>
       <SearchContainer>
@@ -79,8 +88,8 @@ export default function RestrauantScreen() {
         keyExtractor={(item) => item.name}
         refreshControl={
           <RefreshControl
-            refreshing={loading}
-            onRefresh={getRestrauants}
+            refreshing={restrauantsLoading || locationLoading}
+            onRefresh={() => setKeyword("san francisco")}
             colors={[Colors.blue300, Colors.red300]}
           />
         }

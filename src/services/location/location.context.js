@@ -5,7 +5,7 @@ export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
   const [keyword, setKeyword] = useState("san francisco");
-  const [location, setLocation] = useState([]);
+  const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, isError] = useState(null);
 
@@ -22,7 +22,7 @@ export const LocationContextProvider = ({ children }) => {
         setLoading(false);
         isError("no location found");
       }
-    }, 2000);
+    }, 1000);
   };
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { LocationContext } from "../location/location.context";
 export const RestaurantsContext = createContext();
 
 export const RestaurantsContextProvider = ({ children }) => {
-  const { keyword, location } = useContext(LocationContext);
+  const { location } = useContext(LocationContext);
 
   const [restrauants, setRestrauants] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,11 +18,11 @@ export const RestaurantsContextProvider = ({ children }) => {
     setRestrauants([]);
     setTimeout(async () => {
       try {
-        setLoading(false);
         const results = await restrauantsRequest(
           `${location.lat},${location.lng}`
         );
         setRestrauants(results);
+        setLoading(false);
       } catch (error) {
         setLoading(false);
         isError("no restrauants found");
@@ -30,8 +30,10 @@ export const RestaurantsContextProvider = ({ children }) => {
     }, 2000);
   };
   useEffect(() => {
-    getRestrauants(location);
-  }, [keyword]);
+    if (location) {
+      getRestrauants(location);
+    }
+  }, [location]);
 
   return (
     <RestaurantsContext.Provider
