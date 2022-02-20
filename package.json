@@ -10,14 +10,18 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/lato": "^0.2.2",
+    "@expo-google-fonts/oswald": "^0.2.2",
     "expo": "~44.0.0",
+    "expo-font": "~10.0.4",
     "expo-status-bar": "~1.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-paper": "^4.11.2",
     "react-native-web": "0.17.1",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "react-native-svg": "12.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
