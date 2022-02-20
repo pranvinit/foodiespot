@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
-import { FlatList, RefreshControl } from "react-native";
+import { FlatList, RefreshControl, Pressable } from "react-native";
 import { ActivityIndicator, Colors, Button } from "react-native-paper";
 
 // components imports
@@ -41,7 +41,7 @@ const ErrorContainer = styled.View`
   justify-content: center;
 `;
 
-export default function RestrauantScreen() {
+export default function RestrauantScreen({ navigation }) {
   const {
     restrauants,
     loading: restrauantsLoading,
@@ -84,7 +84,19 @@ export default function RestrauantScreen() {
       </SearchContainer>
       <ListContainer
         data={restrauants}
-        renderItem={({ item }) => <RestrauantInfoCard restrauant={item} />}
+        renderItem={({ item }) => {
+          return (
+            <Pressable
+              onPress={() =>
+                navigation.navigate("RestrauantDetail", { restrauant: item })
+              }
+            >
+              {({ pressed }) => (
+                <RestrauantInfoCard restrauant={item} pressed={pressed} />
+              )}
+            </Pressable>
+          );
+        }}
         keyExtractor={(item) => item.name}
         refreshControl={
           <RefreshControl

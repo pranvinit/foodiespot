@@ -9,9 +9,21 @@ export const RestrauantInfo = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+export const CardOverlay = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #ffffff90;
+`;
+
 export const RestrauantCard = styled(Card)`
+  position: relative;
   background-color: #fff;
   margin-bottom: ${(props) => props.theme.space[3]};
+  overflow: hidden;
 `;
 
 export const RestrauantCover = styled(Card.Cover)`

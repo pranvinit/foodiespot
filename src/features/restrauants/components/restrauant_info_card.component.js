@@ -4,6 +4,7 @@ import { SvgXml } from "react-native-svg";
 // styled components imports
 import {
   RestrauantInfo,
+  CardOverlay,
   RestrauantCard,
   RestrauantCover,
   RatingContainer,
@@ -19,7 +20,7 @@ import open from "../../../../assets/open";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomText } from "../../../components/typography/text.component";
 
-export default function RestrauantInfoCard({ restrauant = {} }) {
+export default function RestrauantInfoCard({ restrauant = {}, pressed }) {
   // de-structuring properties from restrauant object
   const { name, icon, photos, rating, address, isOpen, isClosedTemporarily } =
     restrauant;
@@ -28,6 +29,7 @@ export default function RestrauantInfoCard({ restrauant = {} }) {
 
   return (
     <RestrauantCard elevation={5}>
+      {pressed && <CardOverlay />}
       <RestrauantCover source={{ uri: photos[0] }} />
       <RestrauantInfo>
         <CustomText variant="label">{name}</CustomText>
