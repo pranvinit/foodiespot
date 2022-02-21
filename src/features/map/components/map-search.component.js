@@ -10,9 +10,13 @@ import { Searchbar } from "react-native-paper";
 // styled components
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
+  position: absolute;
+  z-index: 999;
+  top: 40px;
+  width: 100%;
 `;
 
-export default function Search() {
+export default function MapSearch() {
   const { search, keyword } = useContext(LocationContext);
   const [searchQuery, setSearchQuery] = useState(keyword);
 
@@ -24,7 +28,7 @@ export default function Search() {
     <SearchContainer>
       <Searchbar
         placeholder="Search for a location"
-        icon="heart"
+        icon="map"
         onChangeText={(value) => setSearchQuery(value)}
         onSubmitEditing={() => {
           if (!searchQuery.length) return;

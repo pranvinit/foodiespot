@@ -5,7 +5,7 @@ export const transformLocation = (location) => {
   const transformedLocation = camelize(location);
   const { geometry = {} } = transformedLocation.results[0];
   const { lat, lng } = geometry.location;
-  return { lat, lng };
+  return { lat, lng, viewport: geometry.viewport };
 };
 
 export const locationRequest = async (searchQuery) => {

@@ -9,13 +9,9 @@ import { SafeArea } from "../../components/utility/safe-area.component";
 // navigators imports
 import { RestaurantsNavigator } from "./restrauants.navigator";
 
-export const MapScreen = () => {
-  return (
-    <SafeArea>
-      <Text>This is a map screen</Text>
-    </SafeArea>
-  );
-};
+// screens imports
+import MapScreen from "../../features/map/screens/map.screen";
+
 export const SettingsScreen = () => {
   return (
     <SafeArea>

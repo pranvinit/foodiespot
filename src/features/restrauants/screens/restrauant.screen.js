@@ -22,9 +22,6 @@ const ListContainer = styled(FlatList).attrs({
   },
 })``;
 
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
 `;
@@ -79,9 +76,7 @@ export default function RestrauantScreen({ navigation }) {
 
   return (
     <SafeArea>
-      <SearchContainer>
-        <Search />
-      </SearchContainer>
+      <Search />
       <ListContainer
         data={restrauants}
         renderItem={({ item }) => {
