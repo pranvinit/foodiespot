@@ -24,7 +24,7 @@ export default function Search() {
     <SearchContainer>
       <Searchbar
         placeholder="Search for a location"
-        icon="heart"
+        icon="heart-outline"
         onChangeText={(value) => setSearchQuery(value)}
         onSubmitEditing={() => {
           if (!searchQuery.length) return;

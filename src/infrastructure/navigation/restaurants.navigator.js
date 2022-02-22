@@ -3,9 +3,9 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
-// restrauants screen imports
-import RestrauantScreen from "../../features/restrauants/screens/restrauant.screen";
-import RestaurantDetailScreen from "../../features/restrauants/screens/restrauant_detail";
+// restaurants screen imports
+import RestaurantScreen from "../../features/restaurants/screens/restaurant.screen";
+import RestaurantDetailScreen from "../../features/restaurants/screens/restaurant_detail";
 
 export const RestaurantsNavigator = () => {
   const Stack = createStackNavigator();
@@ -16,9 +16,9 @@ export const RestaurantsNavigator = () => {
         ...TransitionPresets.ModalSlideFromBottomIOS,
       }}
     >
-      <Stack.Screen name="Restrauants" component={RestrauantScreen} />
+      <Stack.Screen name="Restaurants" component={RestaurantScreen} />
       <Stack.Screen
-        name="RestrauantDetail"
+        name="RestaurantDetail"
         component={RestaurantDetailScreen}
       />
     </Stack.Navigator>

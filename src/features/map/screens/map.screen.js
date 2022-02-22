@@ -9,16 +9,16 @@ import MapCallout from "../components/map-callout.component";
 
 // contexts imports
 import { LocationContext } from "../../../services/location/location.context";
-import { RestaurantsContext } from "../../../services/restrauants/restrauant.context";
+import { RestaurantsContext } from "../../../services/restaurants/restaurant.context";
 
 const Map = styled(MapView)`
   height: 100%;
   width: 100%;
 `;
 
-export default function MapScreen() {
+export default function MapScreen({ navigation }) {
   const { location } = useContext(LocationContext);
-  const { restrauants = [] } = useContext(RestaurantsContext);
+  const { restaurants = [] } = useContext(RestaurantsContext);
 
   const { viewport, lat, lng } = location;
 
@@ -39,8 +39,6 @@ export default function MapScreen() {
     setLangDelta(longitudeDelta);
   }, [location]);
 
-  console.log(location, restrauants);
-
   return (
     <>
       <MapSearch />
@@ -52,18 +50,24 @@ export default function MapScreen() {
           longitudeDelta: langDelta,
         }}
       >
-        {restrauants.map((restrauant) => {
+        {restaurants.map((restaurant) => {
           return (
             <MapView.Marker
-              key={restrauant.name}
+              key={restaurant.name}
               coordinate={{
-                latitude: restrauant.geometry.location.lat,
-                longitude: restrauant.geometry.location.lng,
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
               }}
-              title={restrauant.name}
+              title={restaurant.name}
             >
-              <MapView.Callout>
-                <MapCallout restrauant={restrauant} />
+              <MapView.Callout
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", {
+                    restaurant: restaurant,
+                  })
+                }
+              >
+                <MapCallout restaurant={restaurant} navigation={navigation} />
               </MapView.Callout>
             </MapView.Marker>
           );

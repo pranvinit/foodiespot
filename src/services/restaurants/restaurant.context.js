@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
-import { restrauantsRequest } from "./restrauant.service";
+import { restaurantsRequest } from "./restaurant.service";
 
 // context imports
 import { LocationContext } from "../location/location.context";
@@ -9,35 +9,35 @@ export const RestaurantsContext = createContext();
 export const RestaurantsContextProvider = ({ children }) => {
   const { location } = useContext(LocationContext);
 
-  const [restrauants, setRestrauants] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, isError] = useState(null);
 
-  const getRestrauants = (location) => {
+  const getRestaurants = (location) => {
     setLoading(true);
-    setRestrauants([]);
+    setRestaurants([]);
     setTimeout(async () => {
       try {
-        const results = await restrauantsRequest(
+        const results = await restaurantsRequest(
           `${location.lat},${location.lng}`
         );
-        setRestrauants(results);
+        setRestaurants(results);
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        isError("no restrauants found");
+        isError("no restaurants found");
       }
     }, 2000);
   };
   useEffect(() => {
     if (location) {
-      getRestrauants(location);
+      getRestaurants(location);
     }
   }, [location]);
 
   return (
     <RestaurantsContext.Provider
-      value={{ restrauants, getRestrauants, loading, error }}
+      value={{ restaurants, getRestaurants, loading, error }}
     >
       {children}
     </RestaurantsContext.Provider>

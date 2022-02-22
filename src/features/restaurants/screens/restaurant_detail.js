@@ -7,16 +7,16 @@ import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
 // components imports
-import RestrauantInfoCard from "../components/restrauant_info_card.component";
+import RestaurantInfoCard from "../components/restaurant_info_card.component";
 
 // styled components
-const RestrauantInfoCardContainer = styled.View`
+const RestaurantInfoCardContainer = styled.View`
   padding: 20px;
   padding-bottom: 0;
 `;
 
 export default function RestaurantDetailScreen({ route }) {
-  const { restrauant } = route.params;
+  const { restaurant } = route.params;
 
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
@@ -24,9 +24,9 @@ export default function RestaurantDetailScreen({ route }) {
   const [drinksExpanded, setDrinksExpanded] = useState(false);
   return (
     <SafeArea>
-      <RestrauantInfoCardContainer>
-        <RestrauantInfoCard restrauant={restrauant} />
-      </RestrauantInfoCardContainer>
+      <RestaurantInfoCardContainer>
+        <RestaurantInfoCard restaurant={restaurant} />
+      </RestaurantInfoCardContainer>
       <ScrollView>
         <List.Accordion
           title="Breakfast"

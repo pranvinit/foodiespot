@@ -3,15 +3,15 @@ import { SvgXml } from "react-native-svg";
 
 // styled components imports
 import {
-  RestrauantInfo,
+  RestaurantInfo,
   CardOverlay,
-  RestrauantCard,
-  RestrauantCover,
+  RestaurantCard,
+  RestaurantCover,
   RatingContainer,
   Section,
   MetaContainer,
   Icon,
-} from "./restrauant_info_card.styles";
+} from "./restaurant_info_card.styles";
 
 // assets imports
 import star from "../../../../assets/star";
@@ -20,18 +20,22 @@ import open from "../../../../assets/open";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomText } from "../../../components/typography/text.component";
 
-export default function RestrauantInfoCard({ restrauant = {}, pressed }) {
-  // de-structuring properties from restrauant object
+// components import
+import { Favourites } from "../../../components/favourites/favourite.component";
+
+export default function RestaurantInfoCard({ restaurant = {}, pressed }) {
+  // de-structuring properties from restaurant object
   const { name, icon, photos, rating, address, isOpen, isClosedTemporarily } =
-    restrauant;
+    restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <RestrauantCard elevation={5}>
+    <RestaurantCard elevation={5}>
       {pressed && <CardOverlay />}
-      <RestrauantCover source={{ uri: photos[0] }} />
-      <RestrauantInfo>
+      <Favourites restaurant={restaurant} />
+      <RestaurantCover source={{ uri: photos[0] }} />
+      <RestaurantInfo>
         <CustomText variant="label">{name}</CustomText>
         <Section>
           <RatingContainer>
@@ -52,7 +56,7 @@ export default function RestrauantInfoCard({ restrauant = {}, pressed }) {
           </MetaContainer>
         </Section>
         <CustomText variant="caption">{address}</CustomText>
-      </RestrauantInfo>
-    </RestrauantCard>
+      </RestaurantInfo>
+    </RestaurantCard>
   );
 }

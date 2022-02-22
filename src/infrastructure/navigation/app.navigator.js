@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { SafeArea } from "../../components/utility/safe-area.component";
 
 // navigators imports
-import { RestaurantsNavigator } from "./restrauants.navigator";
+import { RestaurantsNavigator } from "./restaurants.navigator";
 
 // screens imports
 import MapScreen from "../../features/map/screens/map.screen";
@@ -38,10 +38,10 @@ export const AppNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="RestrauantsNavigator"
+        name="RestaurantsNavigator"
         component={RestaurantsNavigator}
         options={{
-          tabBarLabel: "Restrauants",
+          tabBarLabel: "Restaurants",
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons name={TAB_ICON.Restaurants} color={color} size={size} />
           ),

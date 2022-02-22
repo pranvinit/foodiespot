@@ -5,7 +5,7 @@ import { ActivityIndicator, Colors, Button } from "react-native-paper";
 
 // components imports
 import Search from "../components/search.component";
-import RestrauantInfoCard from "../components/restrauant_info_card.component";
+import RestaurantInfoCard from "../components/restaurant_info_card.component";
 
 // utils imports
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -13,7 +13,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomText } from "../../../components/typography/text.component";
 
 // context imports
-import { RestaurantsContext } from "../../../services/restrauants/restrauant.context";
+import { RestaurantsContext } from "../../../services/restaurants/restaurant.context";
 import { LocationContext } from "../../../services/location/location.context";
 
 const ListContainer = styled(FlatList).attrs({
@@ -38,30 +38,34 @@ const ErrorContainer = styled.View`
   justify-content: center;
 `;
 
-export default function RestrauantScreen({ navigation }) {
+export default function RestaurantScreen({ navigation }) {
+  // restaurants context properties
   const {
-    restrauants,
-    loading: restrauantsLoading,
-    error: restrauantsError,
+    restaurants,
+    loading: restaurantsLoading,
+    error: restaurantsError,
   } = useContext(RestaurantsContext);
+
+  // location context properties
+
   const {
     setKeyword,
     loading: locationLoading,
     error: locationError,
   } = useContext(LocationContext);
 
-  if (restrauantsLoading || locationLoading) {
+  if (restaurantsLoading || locationLoading) {
     return (
       <LoadingContainer>
         <Loading size={50} animating={true} color={Colors.blue300} />
       </LoadingContainer>
     );
   }
-  if (restrauantsError || locationError) {
+  if (restaurantsError || locationError) {
     return (
       <ErrorContainer>
         <Spacer position="bottom" size="large">
-          <CustomText variant="error">NO RESTRAUANTS FOUND</CustomText>
+          <CustomText variant="error">NO RESTAURANTS FOUND</CustomText>
         </Spacer>
         <Button
           icon="reload"
@@ -78,16 +82,16 @@ export default function RestrauantScreen({ navigation }) {
     <SafeArea>
       <Search />
       <ListContainer
-        data={restrauants}
+        data={restaurants}
         renderItem={({ item }) => {
           return (
             <Pressable
               onPress={() =>
-                navigation.navigate("RestrauantDetail", { restrauant: item })
+                navigation.navigate("RestaurantDetail", { restaurant: item })
               }
             >
               {({ pressed }) => (
-                <RestrauantInfoCard restrauant={item} pressed={pressed} />
+                <RestaurantInfoCard restaurant={item} pressed={pressed} />
               )}
             </Pressable>
           );
@@ -95,7 +99,7 @@ export default function RestrauantScreen({ navigation }) {
         keyExtractor={(item) => item.name}
         refreshControl={
           <RefreshControl
-            refreshing={restrauantsLoading || locationLoading}
+            refreshing={restaurantsLoading || locationLoading}
             onRefresh={() => setKeyword("san francisco")}
             colors={[Colors.blue300, Colors.red300]}
           />

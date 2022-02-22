@@ -5,7 +5,7 @@ import { Card } from "react-native-paper";
 
 // styled components
 // makes logic and styles modular and adds semenatic reasoning to the components
-export const RestrauantInfo = styled.View`
+export const RestaurantInfo = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
@@ -19,14 +19,14 @@ export const CardOverlay = styled.View`
   background-color: #ffffff90;
 `;
 
-export const RestrauantCard = styled(Card)`
+export const RestaurantCard = styled(Card)`
   position: relative;
   background-color: #fff;
   margin-bottom: ${(props) => props.theme.space[3]};
   overflow: hidden;
 `;
 
-export const RestrauantCover = styled(Card.Cover)`
+export const RestaurantCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
   background-color: #fff;
 `;
