@@ -7,7 +7,7 @@ import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
 // components imports
-import RestaurantInfoCard from "../components/restaurant_info_card.component";
+import RestaurantInfoCard from "../components/restaurant.component";
 
 // styled components
 const RestaurantInfoCardContainer = styled.View`

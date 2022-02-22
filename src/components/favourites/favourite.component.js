@@ -22,8 +22,6 @@ export const Favourites = ({ restaurant }) => {
 
   const isFavourite = favourites.find((r) => r.placeId === restaurant.placeId);
 
-  console.log(isFavourite);
-
   return (
     <FavouritesIcon
       onPress={() =>

@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components/native";
 import { FlatList, RefreshControl, Pressable } from "react-native";
 import { ActivityIndicator, Colors, Button } from "react-native-paper";
 
 // components imports
 import Search from "../components/search.component";
-import RestaurantInfoCard from "../components/restaurant_info_card.component";
+import RestaurantInfoCard from "../components/restaurant.component";
+import { FavouritesSection } from "../../../components/favourites/favourites_section.component";
 
 // utils imports
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -15,6 +16,7 @@ import { CustomText } from "../../../components/typography/text.component";
 // context imports
 import { RestaurantsContext } from "../../../services/restaurants/restaurant.context";
 import { LocationContext } from "../../../services/location/location.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const ListContainer = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -54,6 +56,12 @@ export default function RestaurantScreen({ navigation }) {
     error: locationError,
   } = useContext(LocationContext);
 
+  // favourites context properties
+
+  const { favourites } = useContext(FavouritesContext);
+
+  const [isFavouritesToggled, setIsFavouritesToggled] = useState(false);
+
   if (restaurantsLoading || locationLoading) {
     return (
       <LoadingContainer>
@@ -80,7 +88,11 @@ export default function RestaurantScreen({ navigation }) {
 
   return (
     <SafeArea>
-      <Search />
+      <Search
+        favouritesToggled={isFavouritesToggled}
+        onFavouritesToggled={setIsFavouritesToggled}
+      />
+      {isFavouritesToggled && <FavouritesSection favourites={favourites} />}
       <ListContainer
         data={restaurants}
         renderItem={({ item }) => {
