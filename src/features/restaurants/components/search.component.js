@@ -10,6 +10,7 @@ import { Searchbar } from "react-native-paper";
 // styled components
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
+  padding-bottom: ${(props) => props.theme.space[2]};
 `;
 
 export default function Search({ favouritesToggled, onFavouritesToggled }) {

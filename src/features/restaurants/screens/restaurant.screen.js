@@ -92,7 +92,9 @@ export default function RestaurantScreen({ navigation }) {
         favouritesToggled={isFavouritesToggled}
         onFavouritesToggled={setIsFavouritesToggled}
       />
-      {isFavouritesToggled && <FavouritesSection favourites={favourites} />}
+      {isFavouritesToggled && (
+        <FavouritesSection favourites={favourites} navigation={navigation} />
+      )}
       <ListContainer
         data={restaurants}
         renderItem={({ item }) => {

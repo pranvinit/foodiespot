@@ -4,5 +4,5 @@ import React from "react";
 import { CompactRestaurant } from "../../../components/restaurant/compact-restaurant-card.component";
 
 export default function MapCallout({ restaurant }) {
-  return <CompactRestaurant restaurant={restaurant} />;
+  return <CompactRestaurant restaurant={restaurant} isMap />;
 }

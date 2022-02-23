@@ -8,8 +8,7 @@ import { CustomText } from "../typography/text.component";
 const isAndroid = Platform.OS === "android";
 
 const CompactContainer = styled.View`
-  padding: 10px;
-  margin: 0 auto;
+  padding: ${(props) => props.theme.space[2]};
   align-items: center;
   max-width: 150px;
 `;
@@ -17,18 +16,20 @@ const CompactContainer = styled.View`
 const CompactWebViewImage = styled(WebView)`
   width: 120px;
   height: 100px;
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
 const CompactImage = styled.Image`
   border-radius: 10px;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 100px;
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
-export const CompactRestaurant = ({ restaurant }) => {
+export const CompactRestaurant = ({ restaurant, isMap }) => {
   return (
     <CompactContainer>
-      {isAndroid ? (
+      {isAndroid && isMap ? (
         <CompactWebViewImage source={{ uri: restaurant.photos[0] }} />
       ) : (
         <CompactImage source={{ uri: restaurant.photos[0] }} />
