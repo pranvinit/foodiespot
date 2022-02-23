@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components/native";
 import { FlatList, RefreshControl, Pressable } from "react-native";
 import { ActivityIndicator, Colors, Button } from "react-native-paper";
@@ -57,9 +57,7 @@ export default function RestaurantScreen({ navigation }) {
   } = useContext(LocationContext);
 
   // favourites context properties
-
   const { favourites } = useContext(FavouritesContext);
-
   const [isFavouritesToggled, setIsFavouritesToggled] = useState(false);
 
   if (restaurantsLoading || locationLoading) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { storeFavourites, getFavourites } from "./favourites.service";
 
 export const FavouritesContext = createContext();
 
@@ -7,7 +7,6 @@ export const FavouritesContextProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
 
   // add remove favourites logic
-
   const addToFavourites = (restaurant) => {
     setFavourites((prev) => [...prev, restaurant]);
   };
@@ -19,36 +18,18 @@ export const FavouritesContextProvider = ({ children }) => {
     setFavourites(newFavourites);
   };
 
-  // storing favorites list locally
-  const storeFavourites = async () => {
-    try {
-      const jsonFavourites = JSON.stringify(favourites);
-      await AsyncStorage.setItem("@favourites", jsonFavourites);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   useEffect(() => {
     if (favourites.length) {
-      storeFavourites();
+      storeFavourites(favourites);
     }
   }, [favourites]);
 
-  // reteriving favourites list
-  const getFavourites = async () => {
-    try {
-      const jsonFavourites = await AsyncStorage.getItem("@favourites");
-      if (jsonFavourites !== null) {
-        setFavourites(JSON.parse(jsonFavourites));
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   useEffect(() => {
-    getFavourites();
+    const retriveFavList = async () => {
+      const favList = await getFavourites();
+      setFavourites(favList);
+    };
+    retriveFavList();
   }, []);
 
   return (
