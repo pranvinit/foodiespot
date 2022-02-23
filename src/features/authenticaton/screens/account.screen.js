@@ -1,17 +1,35 @@
 import React from "react";
-import { Button } from "react-native";
-
-// utils imports
-import { SafeArea } from "../../../components/utility/safe-area.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
+// styled components imports
+import {
+  AccountCover,
+  AccountOverlay,
+  AccountOptionsContainer,
+  AccountButton,
+} from "../components/account.styles";
 
 export const AccountScreen = ({ navigation }) => {
   return (
-    <SafeArea>
-      <Button
-        title="register"
-        onPress={() => navigation.navigate("Register")}
-      />
-      <Button title="login" onPress={() => navigation.navigate("Login")} />
-    </SafeArea>
+    <AccountCover>
+      <AccountOverlay />
+      <AccountOptionsContainer>
+        <AccountButton
+          icon="lock-open"
+          mode="contained"
+          onPress={() => navigation.navigate("Login")}
+        >
+          Login
+        </AccountButton>
+        <Spacer position="bottom" size="large" />
+        <AccountButton
+          icon="account"
+          mode="contained"
+          title="login"
+          onPress={() => navigation.navigate("Register")}
+        >
+          Register
+        </AccountButton>
+      </AccountOptionsContainer>
+    </AccountCover>
   );
 };
