@@ -19,7 +19,7 @@ import { LocationContext } from "../../../services/location/location.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { AuthenticationContext } from "../../../services/authentication/auth.context";
 
-const ListContainer = styled(FlatList).attrs({
+export const ListContainer = styled(FlatList).attrs({
   contentContainerStyle: {
     paddingHorizontal: 20,
   },
@@ -41,7 +41,7 @@ const ErrorContainer = styled.View`
   justify-content: center;
 `;
 
-export default function RestaurantScreen({ navigation }) {
+export default function ({ navigation }) {
   // restaurants context properties
   const {
     restaurants,
