@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 

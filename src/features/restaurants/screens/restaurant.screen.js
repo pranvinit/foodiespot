@@ -17,6 +17,7 @@ import { CustomText } from "../../../components/typography/text.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurant.context";
 import { LocationContext } from "../../../services/location/location.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+import { AuthenticationContext } from "../../../services/authentication/auth.context";
 
 const ListContainer = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -59,6 +60,12 @@ export default function RestaurantScreen({ navigation }) {
   // favourites context properties
   const { favourites } = useContext(FavouritesContext);
   const [isFavouritesToggled, setIsFavouritesToggled] = useState(false);
+
+  // auth context properties
+  const { user, isAuthenticated, onLogout } = useContext(AuthenticationContext);
+  console.log(user.email, isAuthenticated);
+
+  // useEffect(() => onLogout(), []);
 
   if (restaurantsLoading || locationLoading) {
     return (

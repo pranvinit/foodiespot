@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 // context imports
 import { AuthenticationContext } from "../../../services/authentication/auth.context";
@@ -24,9 +24,7 @@ export const RegisterScreen = ({ navigation }) => {
   const [confPassword, setConfPassword] = useState("");
 
   // auth context properties
-  const { onRegister, error, loading, user } = useContext(
-    AuthenticationContext
-  );
+  const { onRegister, error } = useContext(AuthenticationContext);
 
   return (
     <AccountCover>

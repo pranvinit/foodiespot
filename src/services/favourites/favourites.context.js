@@ -1,10 +1,15 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { storeFavourites, getFavourites } from "./favourites.service";
+
+// context imports
+import { AuthenticationContext } from "../authentication/auth.context";
 
 export const FavouritesContext = createContext();
 
 export const FavouritesContextProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
+
+  const { user } = useContext(AuthenticationContext);
 
   // add remove favourites logic
   const addToFavourites = (restaurant) => {
@@ -20,17 +25,19 @@ export const FavouritesContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (favourites.length) {
-      storeFavourites(favourites);
+      storeFavourites(user, favourites);
     }
   }, [favourites]);
 
   useEffect(() => {
     const retriveFavList = async () => {
-      const favList = await getFavourites();
-      setFavourites(favList);
+      const favList = await getFavourites(user);
+      if (favList?.length) {
+        setFavourites(favList);
+      }
     };
     retriveFavList();
-  }, []);
+  }, [user]);
 
   return (
     <FavouritesContext.Provider

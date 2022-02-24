@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Text } from "react-native";
+import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
