@@ -25,6 +25,8 @@ export const AccountCover = styled(ImageBackground).attrs({
 
 export const AccountOptionsContainer = styled.View`
   padding: ${(props) => props.theme.space[4]};
+  align-items: center;
+  justify-content: center;
   background-color: #ffffff70;
   border-radius: 10px;
 `;

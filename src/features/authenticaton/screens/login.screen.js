@@ -1,13 +1,44 @@
-import React from "react";
-import { Text } from "react-native";
+import React, { useState } from "react";
+import { TextInput } from "react-native-paper";
+
+import { View } from "react-native";
 
 // utils imports
-import { SafeArea } from "../../../components/utility/safe-area.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
-export const LoginScreen = () => {
+// styled components imports
+import {
+  AccountCover,
+  AccountOverlay,
+  AccountOptionsContainer,
+  AccountButton,
+} from "../components/account.styles";
+
+export const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <SafeArea>
-      <Text>Login Screen</Text>
-    </SafeArea>
+    <AccountCover>
+      <AccountOverlay />
+      <AccountOptionsContainer>
+        <View style={{ flexDirection: "row" }}>
+          <AccountButton
+            icon="lock-open"
+            mode="contained"
+            onPress={() => navigation.navigate("Login")}
+          >
+            Login
+          </AccountButton>
+          <AccountButton
+            icon="lock-open"
+            mode="contained"
+            onPress={() => navigation.navigate("Account")}
+          >
+            Back
+          </AccountButton>
+        </View>
+      </AccountOptionsContainer>
+    </AccountCover>
   );
 };
