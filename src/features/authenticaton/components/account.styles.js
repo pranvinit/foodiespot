@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { ImageBackground } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, TextInput } from "react-native-paper";
 
 // utils imports
 import { colors } from "../../../infrastructure/theme/colors";
@@ -11,7 +11,7 @@ export const AccountOverlay = styled.View`
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #ffffff40;
+  background-color: rgba(255, 255, 255, 0.25);
 `;
 
 export const AccountCover = styled(ImageBackground).attrs({
@@ -27,7 +27,7 @@ export const AccountOptionsContainer = styled.View`
   padding: ${(props) => props.theme.space[4]};
   align-items: center;
   justify-content: center;
-  background-color: #ffffff70;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
 `;
 
@@ -35,4 +35,18 @@ export const AccountButton = styled(Button).attrs({
   color: colors.brand.primary,
 })`
   padding: ${(props) => props.theme.space[2]};
+  width: ${(props) => (props.isBig ? "250px" : "175px")};
+`;
+
+export const AccountInput = styled(TextInput)`
+  width: 250px;
+`;
+
+export const AccountErrorContainer = styled.View`
+  margin-top: ${(props) => props.theme.space[3]};
+`;
+
+export const AppTitle = styled.Text`
+  font-family: ${(props) => props.theme.fonts.heading}
+  font-size: 32px;
 `;

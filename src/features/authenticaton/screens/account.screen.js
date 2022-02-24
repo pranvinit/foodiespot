@@ -1,17 +1,22 @@
 import React from "react";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { CustomText } from "../../../components/typography/text.component";
 // styled components imports
 import {
   AccountCover,
   AccountOverlay,
   AccountOptionsContainer,
   AccountButton,
+  AppTitle,
 } from "../components/account.styles";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountCover>
       <AccountOverlay />
+      <Spacer size="large" position="bottom">
+        <AppTitle variant="label">Foodiespot</AppTitle>
+      </Spacer>
       <AccountOptionsContainer>
         <AccountButton
           icon="lock-open"
