@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import LottieView from "lottie-react-native";
+
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 // styled components imports
@@ -8,6 +10,7 @@ import {
   AccountOptionsContainer,
   AccountButton,
   AppTitle,
+  AnimationWrapper,
 } from "../components/account.styles";
 
 // context imports
@@ -20,9 +23,16 @@ export const AccountScreen = ({ navigation }) => {
   return (
     <AccountCover>
       <AccountOverlay />
-      <Spacer size="large" position="bottom">
-        <AppTitle variant="label">Foodiespot</AppTitle>
-      </Spacer>
+      <AnimationWrapper>
+        <LottieView
+          source={require("../../../../assets/burger.json")}
+          autoPlay
+          loop
+        />
+      </AnimationWrapper>
+      <Spacer size="xlarge" position="bottom" />
+      <AppTitle variant="label">FOODIESPOT</AppTitle>
+      <Spacer size="large" position="bottom" />
       <AccountOptionsContainer>
         {loading ? (
           <ActivityIndicator animating={true} color={Colors.blue300} />

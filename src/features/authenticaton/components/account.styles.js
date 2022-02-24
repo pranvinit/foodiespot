@@ -50,3 +50,11 @@ export const AppTitle = styled.Text`
   font-family: ${(props) => props.theme.fonts.heading}
   font-size: 32px;
 `;
+
+export const AnimationWrapper = styled.View`
+  position: absolute;
+  top: ${(props) => props.theme.space[3]};
+  left: 0;
+  width: 100%;
+  height: 40%;
+`;

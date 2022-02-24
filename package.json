@@ -21,6 +21,7 @@
     "expo-font": "~10.0.4",
     "expo-status-bar": "~1.2.0",
     "firebase": "^9.6.7",
+    "lottie-react-native": "^5.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -31,7 +32,8 @@
     "react-native-svg": "12.1.1",
     "react-native-web": "0.17.1",
     "react-native-webview": "11.15.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "expo-updates": "~0.11.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

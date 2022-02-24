@@ -17,7 +17,6 @@ import { CustomText } from "../../../components/typography/text.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurant.context";
 import { LocationContext } from "../../../services/location/location.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
-import { AuthenticationContext } from "../../../services/authentication/auth.context";
 
 export const ListContainer = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -61,10 +60,6 @@ export default function ({ navigation }) {
   const { favourites } = useContext(FavouritesContext);
   const [isFavouritesToggled, setIsFavouritesToggled] = useState(false);
 
-  // auth context properties
-  const { user, isAuthenticated, onLogout } = useContext(AuthenticationContext);
-  console.log(user.email, isAuthenticated);
-
   // useEffect(() => onLogout(), []);
 
   if (restaurantsLoading || locationLoading) {
@@ -100,6 +95,7 @@ export default function ({ navigation }) {
       {isFavouritesToggled && (
         <FavouritesSection favourites={favourites} navigation={navigation} />
       )}
+      <Spacer size="large" position="bottom" />
       <ListContainer
         data={restaurants}
         renderItem={({ item }) => {
