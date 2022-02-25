@@ -30,7 +30,7 @@ export const RegisterScreen = ({ navigation }) => {
     <AccountCover>
       <AccountOverlay />
       <Spacer size="large" position="bottom">
-        <AppTitle variant="label">Foodiespot</AppTitle>
+        <AppTitle variant="label">FOODIESPOT</AppTitle>
       </Spacer>
       <AccountOptionsContainer>
         <AccountInput

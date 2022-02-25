@@ -95,7 +95,7 @@ export default function ({ navigation }) {
       {isFavouritesToggled && (
         <FavouritesSection favourites={favourites} navigation={navigation} />
       )}
-      <Spacer size="large" position="bottom" />
+      <Spacer size="medium" position="bottom" />
       <ListContainer
         data={restaurants}
         renderItem={({ item }) => {
