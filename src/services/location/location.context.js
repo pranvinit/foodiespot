@@ -22,7 +22,7 @@ export const LocationContextProvider = ({ children }) => {
         setLoading(false);
         isError("no location found");
       }
-    }, 1000);
+    }, 500);
   };
 
   useEffect(() => {
