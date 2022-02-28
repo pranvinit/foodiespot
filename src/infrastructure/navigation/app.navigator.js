@@ -32,6 +32,7 @@ export const AppNavigator = () => {
               headerShown: false,
               tabBarActiveTintColor: "tomato",
               tabBarInactiveTintColor: "grey",
+              tabBarShowLabel: false,
             }}
           >
             <Tab.Screen
